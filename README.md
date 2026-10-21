@@ -63,7 +63,7 @@ OnlineShop provides a centralized e-commerce application with product browsing, 
 
 ## Architecture & Design
 
-The application organizes its code across domain, application, infrastructure, and presentation-related namespaces.
+The application follows Clean Architecture, organizing its code into four main layers: Domain, Application, Infrastructure, and Presentation.
 
 Key implementation details include:
 
