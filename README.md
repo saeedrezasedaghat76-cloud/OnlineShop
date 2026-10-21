@@ -1,77 +1,136 @@
 # OnlineShop — E-Commerce Web Application
 
-## Overview
+## Project Overview
 
-OnlineShop is an e-commerce web application built with ASP.NET Core MVC, C#, Entity Framework Core, and SQL Server. It provides customers with product browsing, shopping cart management, order placement, online checkout, and account management features, along with an administration area for managing products, categories, brands, discounts, orders, and customer reviews.
+OnlineShop is an e-commerce web application developed using C#, ASP.NET Core MVC, Entity Framework Core, and SQL Server. The application provides an online shopping experience for customers and an administration area for managing products, categories, brands, orders, discounts, and customer reviews.
 
-The project focuses on implementing practical e-commerce workflows, organizing application logic, and managing relational data using Entity Framework Core.
+The project focuses on implementing practical e-commerce workflows, organizing application responsibilities, and managing relational data through Entity Framework Core.
 
-## Features
+## Target Users
 
-### Customer Features
+- **Customers:** Browse products, search and filter the catalog, manage shopping carts and favorites, place orders, make online payments, and manage their accounts.
+- **Administrators:** Manage products, categories, brands, discounts, orders, product colors, and customer reviews through the administration area.
 
-- **Product Catalog:** Browse products by category and brand, view product details, images, attributes, colors, and related products.
-- **Search and Filtering:** Search products by keyword, category, and price range, with sorting and pagination.
-- **Shopping Cart:** Add or remove items and update product quantities before checkout.
-- **Favorites:** Save products to a personal favorites list.
-- **Order Management:** Place orders and view order history, payment status, and order details.
-- **Online Payments:** Integrate Stripe Checkout into the payment workflow.
-- **Customer Accounts:** Register, sign in, update profile information, change passwords, and manage delivery addresses.
-- **Verification Flows:** Support OTP-based verification through SMS and email.
-- **Product Reviews:** Submit ratings, comments, strengths, and weaknesses for products.
+## Technical Stack
 
-### Administration Features
+- **Programming Language:** C#
+- **Framework:** ASP.NET Core MVC
+- **ORM:** Entity Framework Core
+- **Database:** Microsoft SQL Server
+- **Authentication:** ASP.NET Core Identity
+- **Payment Integration:** Stripe Checkout
+- **Data Transfer:** Data Transfer Objects (DTOs)
+- **Frontend:** Razor Views, HTML, CSS, JavaScript
+- **Database Configuration:** Fluent API, LINQ, entity relationships, and query filters
 
-- **Product Management:** Create, update, and remove products, including product images and attributes.
-- **Category and Brand Management:** Manage product categories, category images, and brands.
-- **Order Management:** Review orders and inspect order details.
-- **Discount Management:** Create discounts and associate them with products.
-- **Review Moderation:** Search, review, approve, and unapprove customer comments.
-- **Product Color Management:** Add and manage product color options.
-- **Access Control:** Restrict administrative operations using role-based authorization and authorization policies.
+## Architecture & Design
 
-## Technology Stack
+The application separates responsibilities across domain, application, infrastructure, and presentation-related parts of the solution.
 
-| Category | Technologies |
-|---|---|
-| Language | C# |
-| Framework | ASP.NET Core MVC |
-| ORM | Entity Framework Core |
-| Database | Microsoft SQL Server |
-| Authentication | ASP.NET Core Identity |
-| Payments | Stripe Checkout |
-| Data Transfer | Data Transfer Objects (DTOs) |
-| Frontend | Razor Views, HTML, CSS, JavaScript |
-| Data Access | LINQ, EF Core relationships, Fluent API |
-| Dependency Management | Built-in ASP.NET Core Dependency Injection |
+Key design and implementation details include:
 
-## Architecture and Database Design
-
-The application organizes its code across domain, application, infrastructure, and presentation-related namespaces, separating responsibilities across different parts of the system.
-
-Key implementation details include:
-
-- **Entity Framework Core:** Configures entity relationships and database mappings using Fluent API.
-- **ASP.NET Core Identity:** Supports user authentication and account management.
-- **Soft Deletion:** Uses removal flags and timestamps for selected entities instead of immediately deleting records.
-- **Global Query Filters:** Applies filtering rules to selected entities, including products, categories, brands, orders, and payments.
-- **Audit Timestamps:** Handles creation and update timestamps through the database context.
+- **Entity Framework Core:** Manages database access, entity relationships, and database mappings.
+- **ASP.NET Core Identity:** Supports user registration, authentication, and account management.
+- **Separation of Concerns:** Organizes application functionality across different parts of the solution.
+- **Soft Deletion:** Supports marking selected records as removed instead of immediately deleting them.
+- **Global Query Filters:** Applies filtering rules to selected entities.
+- **Audit Timestamps:** Manages entity creation and update timestamps.
 - **Database Indexes:** Defines indexes on selected product, category, and brand fields.
-- **Relational Data Modeling:** Manages relationships between products, categories, brands, carts, orders, payments, discounts, and customer reviews.
+- **Relationship Configuration:** Defines relationships between products, categories, brands, carts, orders, payments, discounts, and reviews.
 
-### Architecture Overview
+### Database Entities
 
-![OnlineShop Architecture](docs/images/architecture-overview.png)
+The database context includes entities for:
 
-## Application Screenshots
+- Products, product images, attributes, and colors
+- Categories and brands
+- Users and delivery addresses
+- Shopping carts and cart items
+- Orders, order items, and payments
+- Discounts and product discounts
+- Favorites and product comments
 
-The following screenshots demonstrate selected customer-facing and administrative features of the application.
+## Product Catalog & Management
+
+The product catalog supports browsing and discovering products, while the administration area provides tools for managing catalog information.
+
+Key features include:
+
+- Product listing and detailed product pages
+- Category- and brand-based product browsing
+- Product search by keyword, category, and price range
+- Sorting and pagination
+- Product images, attributes, and color options
+- Related products and product ratings
+- Product discount management
+- Administrative product creation, editing, and removal
+- Category, brand, and category-image management
+
+## Shopping Cart & Order Management
+
+The shopping and ordering workflows allow customers to select products, manage quantities, and proceed through the checkout process.
+
+Key features include:
+
+- Adding and removing cart items
+- Updating product quantities
+- Managing the shopping cart before checkout
+- Creating orders from cart items
+- Integrating Stripe Checkout into the online payment workflow
+- Viewing paid and unpaid orders
+- Viewing order details and payment status
+- Administrative order review and management
+
+## Customer Accounts & Engagement
+
+The application includes customer account features and tools for interacting with products.
+
+Key features include:
+
+- User registration and login
+- SMS- and email-based OTP verification flows
+- Profile updates and password changes
+- Delivery address management
+- Personal favorites lists
+- Product reviews and ratings
+- Review submissions with comments, strengths, and weaknesses
+- Administrative review moderation
+
+## Key Features
+
+- E-commerce catalog and product discovery
+- Shopping cart and order workflows
+- Stripe Checkout integration
+- Customer account and address management
+- Favorites and product reviews
+- Administrative catalog and order management
+- Discount management
+- Role-based authorization and authorization policies
+- Entity Framework Core relationships and Fluent API configuration
+- Soft deletion, query filters, and audit timestamps
+- SQL Server relational database integration
+
+## My Role
+
+Designed and developed the application's main e-commerce workflows and supporting backend functionality, including:
+
+- Implementing MVC controllers for products, accounts, carts, orders, and administration.
+- Developing product search, filtering, sorting, and pagination.
+- Configuring Entity Framework Core mappings, relationships, indexes, and query filters.
+- Integrating ASP.NET Core Identity for user authentication and account management.
+- Implementing favorites, product reviews, discounts, and order workflows.
+- Integrating Stripe Checkout into the payment process.
+- Developing administrative features for managing catalog data, orders, and customer reviews.
+
+## Project Showcase
+
+The following screenshots demonstrate selected customer-facing features and administrative functionality.
 
 ### Homepage
 
 ![OnlineShop Homepage](docs/images/homepage.png)
 
-### Categories and Products
+### Categories & Products
 
 ![Categories and Products](docs/images/categories-products.png)
 
@@ -83,7 +142,7 @@ The following screenshots demonstrate selected customer-facing and administrativ
 
 ![Shopping Cart](docs/images/shopping-cart.png)
 
-### Checkout and Payment
+### Checkout & Payment
 
 ![Checkout and Payment](docs/images/checkout-payment.png)
 
@@ -95,34 +154,9 @@ The following screenshots demonstrate selected customer-facing and administrativ
 
 ![Admin Product Management](docs/images/admin-products.png)
 
-## My Role and Contributions
+### Architecture Overview
 
-As the developer of this project, I worked on implementing the main e-commerce workflows and their supporting backend functionality, including:
-
-- Developing MVC controllers and application workflows for products, carts, orders, accounts, and administration.
-- Implementing product search, filtering, sorting, and pagination.
-- Configuring Entity Framework Core mappings, relationships, query filters, and database indexes.
-- Integrating ASP.NET Core Identity for authentication and account management.
-- Implementing product favorites, customer reviews, discount management, and order workflows.
-- Integrating Stripe Checkout into the online payment process.
-- Building administrative features for managing catalog data, orders, and customer reviews.
-
-## Potential Improvements
-
-Areas for future development include:
-
-- Adding automated unit and integration tests.
-- Improving application configuration and secrets management.
-- Expanding structured logging and error handling.
-- Reviewing database query performance and indexing as usage grows.
-- Strengthening payment lifecycle handling and webhook-based verification.
-- Adding a REST API for clients that require API-based access.
-
-## Repository Notes
-
-This repository is intended to showcase the application's functionality, technical stack, architecture, and selected user interface screens.
-
-The screenshots provide a visual overview of the project without requiring visitors to browse the complete application source code.
+![OnlineShop Architecture](docs/images/architecture-overview.png)
 
 ## Contact
 
