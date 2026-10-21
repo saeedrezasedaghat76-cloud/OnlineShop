@@ -103,7 +103,7 @@ The following screenshots highlight selected areas of the application. Each exam
 
 **Business Value:** Makes product discovery easier and provides a central starting point for the shopping journey.
 
-![OnlineShop Homepage](docs/images/homepage.png)
+
 
 ### 2. Product Details
 
