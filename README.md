@@ -180,7 +180,7 @@ I developed the application's backend and core e-commerce functionality, working
 
 ## Deployment
 
-The project is an ASP.NET Core MVC web application backed by SQL Server. Its deployment configuration and production hosting status should be documented separately according to the environment in which this specific application has actually been deployed.
+The project is an ASP.NET Core MVC web application backed by SQL Server.The application can be deployed to web hosting environments that support ASP.NET Core and SQL Server, or containerized and deployed using Docker.
 
 ## Commercial Potential & Extensibility
 
