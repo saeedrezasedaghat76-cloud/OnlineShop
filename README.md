@@ -1,4 +1,4 @@
-# OnlineShop — E-Commerce Web Application
+# OnlineShop — Integrated E-Commerce System
 
 An e-commerce web application developed with **C#, ASP.NET Core MVC, Entity Framework Core, and SQL Server** to support product browsing, shopping cart management, order processing, online payments, customer accounts, and product reviews.
 
@@ -18,11 +18,16 @@ The homepage presents the product catalog and featured products, providing custo
 
 ### The Problem
 
-Online stores need reliable ways to organize product information, help customers find relevant items, manage shopping carts, process orders, and support online payments. Without connected workflows, maintaining product information and managing the customer shopping experience becomes more difficult.
+Online stores need reliable ways to organize product information, help customers find relevant items, manage shopping carts, process orders, and support secure online payments. Without connected workflows, maintaining product information and managing the customer shopping experience becomes more difficult.
 
 ### The Solution
 
-OnlineShop provides a centralized e-commerce application with product browsing, search and filtering, shopping cart management, order workflows, Stripe Checkout integration, customer account features, and administrative tools for managing catalog data and customer reviews.
+OnlineShop provides a centralized e-commerce application with product browsing, search and filtering, shopping cart management, order workflows, customer account features, and administrative tools for managing catalog data and customer reviews.
+
+The application supports two payment integrations for different markets:
+
+- **ZarinPal:** For processing domestic payments in Iran.
+- **Stripe Checkout:** For international payments, with Webhook integration to handle payment events.
 
 ## Target Users
 
@@ -36,7 +41,8 @@ OnlineShop provides a centralized e-commerce application with product browsing, 
 - **Product Search & Filtering:** Search by keyword, filter by category and price range, sort results, and navigate paginated listings.
 - **Shopping Cart:** Add and remove products and update item quantities before checkout.
 - **Order Management:** Create orders from cart items and review order history, order details, and payment status.
-- **Online Payments:** Integrate Stripe Checkout into the online payment workflow.
+- **Multiple Payment Gateways:** Support domestic payments in Iran through ZarinPal and international payments through Stripe Checkout.
+- **Stripe Webhooks:** Handle Stripe payment events as part of the international payment workflow.
 - **Customer Accounts:** Register, sign in, update profile information, change passwords, and manage delivery addresses.
 - **Favorites:** Save products and manage a personal favorites list.
 - **Product Reviews & Ratings:** Submit ratings, comments, strengths, and weaknesses for products.
@@ -54,7 +60,9 @@ OnlineShop provides a centralized e-commerce application with product browsing, 
 | Entity Framework Core | Data access, entity relationships, and database mappings |
 | SQL Server | Relational data storage |
 | ASP.NET Core Identity | User authentication and account management |
-| Stripe Checkout | Online payment integration |
+| ZarinPal | Domestic online payment integration for Iran |
+| Stripe Checkout | International online payment integration |
+| Stripe Webhooks | Handling Stripe payment events |
 | DTOs | Data transfer between application components |
 | LINQ | Data querying and filtering |
 | Fluent API | Entity relationship and database configuration |
@@ -63,7 +71,7 @@ OnlineShop provides a centralized e-commerce application with product browsing, 
 
 ## Architecture & Design
 
-The application follows Clean Architecture, organizing its code into four main layers: Domain, Application, Infrastructure, and Presentation.
+The application follows **Clean Architecture**, organizing its code into four main layers: Domain, Application, Infrastructure, and Presentation.
 
 Key implementation details include:
 
@@ -75,6 +83,7 @@ Key implementation details include:
 - **Audit Timestamps:** Handles entity creation and update timestamps.
 - **Database Indexes:** Defines indexes on selected product, category, and brand fields.
 - **Relational Data Modeling:** Connects products, categories, brands, carts, orders, payments, discounts, and customer reviews.
+- **Payment Integration:** Supports separate payment workflows for domestic and international transactions.
 
 ### Database Entities
 
@@ -103,7 +112,7 @@ The following screenshots highlight selected areas of the application. Each exam
 
 **Business Value:** Makes product discovery easier and provides a central starting point for the shopping journey.
 
-
+![OnlineShop Homepage](docs/images/homepage.png)
 
 ### 2. Product Details
 
@@ -137,11 +146,11 @@ The following screenshots highlight selected areas of the application. Each exam
 
 ### 5. Checkout & Online Payments
 
-**Problem:** Online stores need a payment workflow that connects customer orders with the checkout process.
+**Problem:** Online stores need reliable payment workflows that connect customer orders with payment processing across different markets.
 
-**Solution:** The application creates orders from cart items and integrates Stripe Checkout into the online payment workflow.
+**Solution:** The application supports two payment integrations: ZarinPal for domestic transactions in Iran and Stripe Checkout for international payments. The Stripe integration also includes Webhook handling for payment events.
 
-**Business Value:** Connects order placement with an online payment experience.
+**Business Value:** Provides payment options for both domestic and international customers and connects payment processing with the order workflow.
 
 ![Checkout and Payment](docs/images/checkout-payment.png)
 
@@ -176,26 +185,19 @@ I developed the application's backend and core e-commerce functionality, working
 - Favorites, product reviews, ratings, and discount functionality.
 - Administrative workflows for products, categories, brands, orders, and reviews.
 - Entity Framework Core mappings, relationships, query filters, indexes, and timestamp handling.
-- Stripe Checkout integration into the online payment workflow.
+- ZarinPal integration for domestic online payments in Iran.
+- Stripe Checkout integration for international online payments.
+- Stripe Webhook handling for payment events.
 
 ## Deployment
 
-The project is an ASP.NET Core MVC web application backed by SQL Server.The application can be deployed to web hosting environments that support ASP.NET Core and SQL Server, or containerized and deployed using Docker.
+The project is an ASP.NET Core MVC web application backed by SQL Server. It can be deployed to web hosting environments that support ASP.NET Core and SQL Server, or containerized and deployed using Docker.
 
 ## Commercial Potential & Extensibility
 
-OnlineShop provides a foundation for an e-commerce solution that can be adapted to different product catalogs and store requirements.
+OnlineShop provides an e-commerce solution that can be adapted to different product catalogs and store requirements. Its payment integrations support both domestic transactions in Iran and international payments through separate payment gateways.
 
-Potential future improvements include:
-
-- Expanding payment lifecycle handling and webhook-based payment verification.
-- Adding automated unit and integration tests.
-- Improving structured logging and error handling.
-- Enhancing database query performance as the catalog grows.
-- Adding a REST API for applications that require API-based access.
-- Extending the application with additional store configuration and business-specific features.
-
-These are potential areas for further development rather than claims about functionality already implemented.
+The application can also be extended with additional store-specific features and integrations as business requirements evolve.
 
 ## Repository Notes
 
